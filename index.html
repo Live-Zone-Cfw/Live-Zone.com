@@ -8,131 +8,37 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
-        
         * { scroll-behavior: smooth; }
-        body { 
-            font-family: 'Tajawal', sans-serif; 
-            margin: 0; padding: 0;
-            background-color: #000;
-            color: white;
-            overflow-x: hidden;
-        }
+        body { font-family: 'Tajawal', sans-serif; background-color: #000; color: white; overflow-x: hidden; }
 
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 100;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(0, 162, 255, 0.1);
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        /* نفيجيشن */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(0, 0, 0, 0.4); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0, 162, 255, 0.1); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
         .nav-links a { margin: 0 15px; font-weight: 700; transition: 0.3s; font-size: 0.9rem; }
         .nav-links a:hover { color: #00a2ff; }
+        .nav-discord { background: linear-gradient(90deg, #00a2ff 0%, #0055ff 100%); padding: 8px 25px; border-radius: 8px; font-weight: 900; box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3); }
 
-        .nav-discord {
-            background: linear-gradient(90deg, #00a2ff 0%, #0055ff 100%);
-            padding: 8px 25px;
-            border-radius: 8px;
-            font-weight: 900;
-            box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
-            transition: 0.3s;
-        }
+        /* خلفية */
+        .full-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 20, 50, 0.8)), url('https://i.imgur.com/DnUcI67.png'); background-size: cover; background-position: center; z-index: -1; }
 
-        #intro {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: #000;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
-        }
+        /* ستايل الأزرار مثل الصورة */
+        .btn-rules { background: white; color: #1e3a8a; padding: 15px 40px; border-radius: 12px; font-weight: 900; font-size: 1.2rem; transition: 0.3s; box-shadow: 0 0 20px rgba(255,255,255,0.2); }
+        .btn-support { background: rgba(0, 30, 80, 0.6); border: 2px solid rgba(0, 162, 255, 0.5); color: white; padding: 15px 40px; border-radius: 12px; font-weight: 900; font-size: 1.2rem; transition: 0.3s; backdrop-filter: blur(10px); }
+        .btn-rules:hover, .btn-support:hover { transform: scale(1.05); }
 
-        #typewriter { font-size: 1.5rem; font-weight: 700; color: #00a2ff; min-height: 1.6em; }
-
-        .full-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 20, 50, 0.8)), 
-                        url('https://i.imgur.com/DnUcI67.png');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-
+        /* نموذج التقييم الأزرق */
+        .form-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 162, 255, 0.2); width: 100%; max-width: 600px; }
+        input, textarea { background: rgba(0, 10, 30, 0.7) !important; border: 1px solid #00a2ff !important; border-radius: 10px; padding: 12px; color: white !important; width: 100%; margin-top: 8px; outline: none; }
+        
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 20px; }
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 20px; }
-
-        .rule-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 162, 255, 0.1);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 15px;
-            width: 100%;
-            max-width: 800px;
-            transition: 0.3s;
-        }
-        .rule-card:hover { border-color: #00a2ff; background: rgba(0, 162, 255, 0.05); }
-
-        .staff-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
-            width: 100%;
-            max-width: 1000px;
-        }
-        .staff-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
-        .staff-card:hover { transform: translateY(-5px); border-color: #00a2ff; }
-
-        /* ستايل النموذج المحسن - أزرق احترافي */
-        input, textarea {
-            background: rgba(0, 0, 0, 0.5) !important;
-            border: 1px solid rgba(0, 162, 255, 0.4) !important;
-            border-radius: 10px;
-            padding: 12px;
-            color: white !important;
-            width: 100%;
-            margin-top: 8px;
-            outline: none;
-            transition: 0.3s;
-        }
-        input:focus, textarea:focus { border-color: #00a2ff !important; box-shadow: 0 0 10px rgba(0, 162, 255, 0.2); }
-
-        .form-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 162, 255, 0.2); width: 100%; max-width: 600px; }
-        
-        .scroll-down { position: absolute; bottom: 30px; animation: bounce 2s infinite; color: #00a2ff; font-size: 2rem; cursor: pointer; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
     </style>
 </head>
 <body>
 
-    <div id="intro">
-        <h2 class="text-4xl font-black text-white mb-4 italic">LIVE <span class="text-blue-500">ZONE CFW</span></h2>
-        <div id="typewriter"></div>
-    </div>
-
     <nav>
         <div class="text-xl font-black italic">LIVE <span class="text-blue-500">ZONE</span></div>
-        <div class="hidden md:flex nav-links text-white">
+        <div class="hidden md:flex nav-links">
             <a href="#hero">الرئيسية</a>
             <a href="#rules">القوانين</a>
             <a href="#owners">الإدارة</a>
@@ -144,187 +50,80 @@
     <div class="full-bg"></div>
 
     <section id="hero">
-        <div class="reveal flex flex-col items-center text-center">
-            <div class="bg-blue-500/20 text-blue-400 border border-blue-500 px-5 py-1 rounded-full font-black text-xs mb-8 uppercase">Under Maintenance | قيد الصيانة</div>
-            <img src="https://i.imgur.com/GA9axDq.jpeg" alt="Live Zone" class="w-32 h-32 rounded-full border-4 border-blue-500 mb-6 shadow-2xl">
+        <div class="reveal text-center">
+            <img src="https://i.imgur.com/GA9axDq.jpeg" class="w-32 h-32 rounded-full border-4 border-blue-500 mx-auto mb-6 shadow-2xl">
             <h1 class="text-6xl md:text-8xl font-black italic uppercase mb-4">LIVE <span class="text-blue-500">ZONE CFW</span></h1>
-            <p class="max-w-xl text-lg font-bold text-slate-300">نعمل حالياً على تطوير تجربة فريدة لكم في عالم روبلوكس.. انتظرونا قريباً.</p>
+            <p class="text-lg font-bold text-slate-300">نعمل على تطوير تجربة فريدة لكم في عالم روبلوكس.</p>
         </div>
-        <a href="#rules" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </section>
 
-    <section id="rules" class="bg-black/40">
-        <div class="reveal w-full max-w-4xl px-4">
-            <h2 class="text-4xl font-black mb-10 text-right border-r-4 border-blue-500 pr-4 italic">قوانين الحياة الواقعية</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">قوانين - VDM</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">يمنع استخدام المركبه كا وسيلة للقتل أو الدهسه يجب عليك القيادة بشكل واقعي و منطقي</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">القتل العشوائي ـ RDM</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">قتل الأشخاص بشكل عشوائي دون تهديد ـ عداوة في المناطق الامنه أو الغير امنه ممنوع منعاً باتاً</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">تقدير الحياة ـ Appreciatinglife</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">يجيب عليك الخوف على حياتك بشكل واقعي و عدم الذهاب للمناطق الخطره</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">الحياة الجديدة ـ NRL</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">في حال تم اسقاطك يمنع التكلم ـ في حال التحلل لا يمكنك تذكر ماذا حدث لك</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">الباور جيمنج ـ Power Gaming</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">يمنع استخدام وسائل خارج الرول للتواصل مع الآخرين</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">الميتاجيمنج ـ Metagaming</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">اخذ معلومات من خارج الرول مثل ديسكورد أو بث أو اي طريقه اخرى</p>
-                </div>
+    <section id="rules">
+        <div class="reveal flex flex-col items-center">
+            <div class="flex flex-wrap justify-center gap-6 mb-12">
+                <a href="#rules-content" class="btn-rules">دستور السيرفر</a>
+                <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="btn-support">الدعم الفني</a>
             </div>
 
-            <h2 class="text-4xl font-black mt-16 mb-10 text-right border-r-4 border-blue-500 pr-4 italic">قوانين الديسكورد</h2>
-            <div class="rule-card border-dashed">
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 text-sm text-gray-200 list-decimal list-inside pr-4">
-                    <li>يمنع السب بجميع انواعه</li>
-                    <li>يمنع السبام</li>
-                    <li>يمنع نشر روابط</li>
-                    <li>يمنع سحب الأعضاء للخاص</li>
-                    <li>يجب احترام جميع الأعضاء</li>
-                    <li>يمنع التسبب في مشاكل</li>
-                    <li>يمنع الكلام في المواضيع السياسية</li>
-                    <li>يمنع استخدام الأوامر في العام</li>
-                </ul>
-            </div>
-
-            <div class="mt-8 bg-red-600/20 border border-red-600 p-4 rounded-xl text-center">
-                <p class="font-black text-red-500">تنبيه مهم 🛑: تجاوزك لهاذي القوانين قد يعرضك للباند 24 ساعه إلى 42 ساعه</p>
+            <div id="rules-content" class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="p-6 bg-white/5 border border-blue-500/20 rounded-xl">
+                    <h3 class="text-blue-400 font-black mb-2">قوانين - VDM</h3>
+                    <p class="text-sm text-gray-300">يمنع استخدام المركبه كا وسيلة للقتل أو الدهسه.</p>
+                </div>
+                <div class="p-6 bg-white/5 border border-blue-500/20 rounded-xl">
+                    <h3 class="text-blue-400 font-black mb-2">القتل العشوائي ـ RDM</h3>
+                    <p class="text-sm text-gray-300">قتل الأشخاص بشكل عشوائي دون تهديد ممنوع منعاً باتاً.</p>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="owners">
-        <div class="reveal flex flex-col items-center w-full">
-            <h2 class="text-4xl font-black mb-12 italic text-blue-500 uppercase">Administration | الإدارة</h2>
-            
-            <div class="owner-card flex flex-col items-center gap-4 mb-12 transform scale-110 border-blue-500 bg-white/5 p-8 rounded-2xl border">
-                <img src="https://i.imgur.com/7fG6atc.jpeg" class="w-24 h-24 rounded-full border-4 border-blue-500 shadow-2xl">
+        <div class="reveal flex flex-col items-center">
+            <h2 class="text-4xl font-black mb-8 text-blue-500">الإدارة</h2>
+            <div class="bg-white/5 p-8 rounded-2xl border border-blue-500 flex flex-col items-center">
+                <img src="https://i.imgur.com/7fG6atc.jpeg" class="w-24 h-24 rounded-full border-4 border-blue-500 mb-4">
                 <h3 class="text-2xl font-black">#-zynox</h3>
-                <span class="bg-blue-500 text-black px-4 py-1 rounded font-black text-xs uppercase">Founder / المالك</span>
+                <span class="text-blue-400 font-bold">Owner / المالك</span>
             </div>
-
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <div class="text-blue-400 font-black text-lg">Admin Name</div>
-                    <div class="text-xs text-gray-500 uppercase mt-1">Administrator</div>
-                </div>
-                <div class="staff-card">
-                    <div class="text-blue-400 font-black text-lg">Staff Name</div>
-                    <div class="text-xs text-gray-500 uppercase mt-1">Moderator</div>
-                </div>
-                </div>
         </div>
     </section>
 
     <section id="reviews">
-        <div class="reveal flex flex-col items-center w-full px-4">
-            <div id="start-form-container">
-                <button onclick="confirmEntry()" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-xl font-bold text-xl transition-all shadow-lg uppercase">هل أنت متأكد أنك تود التقييم؟</button>
+        <div class="reveal flex flex-col items-center w-full">
+            <div class="form-card">
+                <h3 class="text-center font-black text-2xl mb-6 text-blue-400">تقييم السيرفر</h3>
+                <div class="mb-4 text-right"><label class="font-bold">اسمك :</label><input type="text" id="reviewer-name"></div>
+                <div class="mb-4 text-right"><label class="font-bold">عمرك :</label><input type="number" id="reviewer-age"></div>
+                <div class="mb-4 text-right"><label class="font-bold">تقييمك :</label><textarea id="reviewer-comment" rows="3"></textarea></div>
+                <button onclick="submitReview()" class="bg-blue-600 w-full py-4 rounded-xl font-black hover:bg-blue-700 transition-all">إرسال التقييم</button>
             </div>
-            
-            <div id="evaluation-form" class="hidden form-card mt-8">
-                <div class="mb-6 text-right">
-                    <label class="text-blue-400 font-black block mb-1">اسمك :</label>
-                    <input type="text" id="reviewer-name" placeholder="أدخل اسمك...">
-                </div>
-                <div class="mb-6 text-right">
-                    <label class="text-blue-400 font-black block mb-1">عمرك :</label>
-                    <input type="number" id="reviewer-age" placeholder="أدخل عمرك...">
-                </div>
-                <div class="mb-6 text-right">
-                    <label class="text-blue-400 font-black block mb-1">تقييمك :</label>
-                    <textarea id="reviewer-comment" rows="3" placeholder="اكتب تقييمك هنا..."></textarea>
-                </div>
-                <button onclick="submitReview()" class="bg-blue-500 hover:bg-blue-600 w-full py-4 rounded-xl font-black text-white transition-all">إرسال التقييم</button>
-            </div>
-            
-            <div class="w-full max-w-2xl mt-16"><div id="reviews-list"></div></div>
+            <div id="reviews-list" class="w-full max-w-2xl mt-12"></div>
         </div>
     </section>
 
     <script>
-        const text = "جاري تحضير أفضل بيئة رول بلاي...";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(i);
-                i++; setTimeout(typeWriter, 80);
-            } else {
-                setTimeout(() => {
-                    document.getElementById("intro").style.transform = "translateY(-100%)";
-                    setTimeout(activateReveals, 500);
-                    loadReviews();
-                }, 800);
-            }
-        }
-
-        function confirmEntry() {
-            document.getElementById('start-form-container').style.display = 'none';
-            document.getElementById('evaluation-form').classList.remove('hidden');
-        }
-
-        function submitReview() {
-            const name = document.getElementById('reviewer-name').value;
-            const age = document.getElementById('reviewer-age').value;
-            const comment = document.getElementById('reviewer-comment').value;
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
-
-            if(name && age && comment) {
-                const reviewData = { name, age, comment, time: timeStr };
-                let reviews = JSON.parse(localStorage.getItem('livezone_reviews')) || [];
-                reviews.unshift(reviewData);
-                localStorage.setItem('livezone_reviews', JSON.stringify(reviews));
-                renderReview(reviewData);
-                document.getElementById('reviewer-name').value = '';
-                document.getElementById('reviewer-age').value = '';
-                document.getElementById('reviewer-comment').value = '';
-                document.getElementById('evaluation-form').classList.add('hidden');
-                document.getElementById('start-form-container').style.display = 'block';
-                alert('تم إرسال تقييمك بنجاح!');
-            } else {
-                alert('الرجاء تعبئة كافة الحقول!');
-            }
-        }
-
-        function loadReviews() {
-            let reviews = JSON.parse(localStorage.getItem('livezone_reviews')) || [];
-            reviews.forEach(r => renderReview(r));
-        }
-
-        function renderReview(data) {
-            const list = document.getElementById('reviews-list');
-            const div = document.createElement('div');
-            div.className = 'bg-white/5 p-6 rounded-2xl mb-4 border-r-4 border-blue-500 text-right backdrop-blur-sm';
-            div.innerHTML = `
-                <div class="flex justify-between text-xs text-blue-300/60 mb-2">
-                    <span><i class="far fa-clock ml-1"></i> ${data.time}</span>
-                    <span>عمر: ${data.age}</span>
-                </div>
-                <div class="font-black text-blue-400 text-lg mb-1">${data.name}</div>
-                <p class="text-gray-300 text-sm leading-relaxed">${data.comment}</p>
-            `;
-            list.prepend(div);
-        }
-
+        // تفعيل حركة الظهور
         function activateReveals() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
             }, { threshold: 0.1 });
             document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
         }
-        window.onload = typeWriter;
+        window.onload = activateReveals;
+
+        function submitReview() {
+            const name = document.getElementById('reviewer-name').value;
+            const age = document.getElementById('reviewer-age').value;
+            const comment = document.getElementById('reviewer-comment').value;
+            if(name && age && comment) {
+                const list = document.getElementById('reviews-list');
+                const div = document.createElement('div');
+                div.className = 'bg-white/5 p-6 rounded-xl mb-4 border-r-4 border-blue-500 text-right';
+                div.innerHTML = `<div class="font-black text-blue-400">${name}</div><p class="text-sm">${comment}</p>`;
+                list.prepend(div);
+                alert('شكراً لتقييمك!');
+            }
+        }
     </script>
 </body>
 </html>
