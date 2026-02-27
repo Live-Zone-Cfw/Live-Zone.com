@@ -18,6 +18,41 @@
             overflow-x: hidden;
         }
 
+        /* شريط التنقل العلوي */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(0, 162, 255, 0.1);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            margin: 0 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links a:hover { color: #00a2ff; }
+
+        .nav-discord {
+            background: linear-gradient(90deg, #00a2ff 0%, #0055ff 100%);
+            padding: 8px 25px;
+            border-radius: 8px;
+            font-weight: 900;
+            font-size: 0.8rem;
+            box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
+            transition: 0.3s;
+        }
+        .nav-discord:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(0, 162, 255, 0.5); }
+
         /* شاشة التحميل (Intro) */
         #intro {
             position: fixed;
@@ -117,7 +152,6 @@
         }
         .discord-btn:hover { transform: translateY(-5px); background: #4752c4; }
 
-        /* سهم النزول */
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -140,11 +174,20 @@
         <div id="typewriter"></div>
     </div>
 
+    <nav>
+        <div class="text-xl font-black italic">LIVE <span class="text-blue-500">ZONE</span></div>
+        <div class="hidden md:flex nav-links">
+            <a href="#hero">الرئيسية</a>
+            <a href="#owners">الأونرات</a>
+        </div>
+        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="nav-discord">ديسكورد</a>
+    </nav>
+
     <div class="full-bg"></div>
 
     <section id="hero">
         <div class="reveal flex flex-col items-center text-center">
-            <div class="maintenance-tag mb-8 uppercase">UNDER MAINTENANCE | قيد الصيانة</div>
+            <div class="maintenance-tag mb-8 uppercase">Under Maintenance | قيد الصيانة</div>
             
             <div class="flex flex-col md:flex-row items-center gap-10 mb-8">
                 <img src="https://i.imgur.com/GA9axDq.jpeg" alt="Live Zone" class="server-img">
@@ -184,7 +227,6 @@
     </section>
 
     <script>
-        // نظام الكتابة التلقائية (Typewriter)
         const text = "جاري تحضير أفضل بيئة رول بلاي...";
         let i = 0;
         function typeWriter() {
@@ -200,7 +242,6 @@
             }
         }
 
-        // تفعيل أنيميشن الظهور
         function activateReveals() {
             const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
