@@ -18,6 +18,7 @@
             overflow-x: hidden;
         }
 
+        /* نفيجيشن */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -31,17 +32,7 @@
             align-items: center;
         }
 
-        /* قسم الإحصائيات */
-        .stat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-        .stat-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
-
+        /* تصميم قسم التقييم الجديد */
         .review-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -77,19 +68,34 @@
             margin-top: 5px;
             outline: none;
         }
+        .input-style:focus { border-color: #3b82f6 !important; }
 
-        .btn-submit { background: #3b82f6; width: 100%; padding: 12px; border-radius: 10px; font-weight: 900; margin-top: 20px; transition: 0.3s; }
+        .btn-submit {
+            background: #3b82f6;
+            width: 100%;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 900;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
         .btn-submit:hover { background: #2563eb; transform: translateY(-2px); }
 
-        .btn-rules { background: white; color: #1e3a8a; padding: 12px 35px; border-radius: 10px; font-weight: 900; }
-        .btn-support { background: rgba(30, 58, 138, 0.4); border: 1px solid #3b82f6; padding: 12px 35px; border-radius: 10px; font-weight: 900; }
+        .star-rating { color: #1e3a8a; font-size: 0.8rem; margin-top: 10px; }
+
+        .btn-rules { background: white; color: #1e3a8a; padding: 12px 35px; border-radius: 10px; font-weight: 900; transition: 0.3s; }
+        .btn-support { background: rgba(30, 58, 138, 0.4); border: 1px solid #3b82f6; padding: 12px 35px; border-radius: 10px; font-weight: 900; transition: 0.3s; }
 
         .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 20px; }
         
-        @media (max-width: 768px) { .review-container { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .review-container { grid-template-columns: 1fr; }
+            .review-form-box { order: -1; }
+        }
     </style>
 </head>
 <body>
@@ -97,12 +103,11 @@
     <nav>
         <div class="text-xl font-black italic">LIVE <span class="text-blue-500">ZONE</span></div>
         <div class="hidden md:flex gap-6">
-            <a href="#hero" class="font-bold hover:text-blue-500">الرئيسية</a>
-            <a href="#stats" class="font-bold hover:text-blue-500">الإحصائيات</a>
-            <a href="#rules" class="font-bold hover:text-blue-500">القوانين</a>
-            <a href="#reviews" class="font-bold hover:text-blue-500">التقييمات</a>
+            <a href="#hero" class="font-bold hover:text-blue-500 transition">الرئيسية</a>
+            <a href="#rules" class="font-bold hover:text-blue-500 transition">القوانين</a>
+            <a href="#reviews" class="font-bold hover:text-blue-500 transition">التقييمات</a>
         </div>
-        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="bg-blue-600 px-6 py-2 rounded-lg font-black text-sm">ديسكورد</a>
+        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="bg-blue-600 px-6 py-2 rounded-lg font-black text-sm text-white">ديسكورد (974)</a>
     </nav>
 
     <section id="hero">
@@ -118,40 +123,17 @@
         </div>
     </section>
 
-    <section id="stats" class="bg-black/10">
-        <div class="reveal w-full max-w-4xl px-4">
-            <h2 class="text-3xl font-black mb-10 text-center text-blue-500 uppercase italic">Server Stats | إحصائيات المجتمع</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="stat-card">
-                    <i class="fas fa-users text-4xl text-blue-500 mb-4"></i>
-                    <div class="text-3xl font-black">974</div>
-                    <div class="text-gray-400 text-sm">عضو في المجتمع</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-car text-4xl text-blue-500 mb-4"></i>
-                    <div class="text-3xl font-black">+150</div>
-                    <div class="text-gray-400 text-sm">مركبة واقعية</div>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-shield-alt text-4xl text-blue-500 mb-4"></i>
-                    <div class="text-3xl font-black">24/7</div>
-                    <div class="text-gray-400 text-sm">حماية ودعم فني</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="rules" class="bg-black/20 w-full">
         <div class="reveal w-full max-w-4xl px-4">
             <h2 class="text-4xl font-black mb-10 text-right border-r-4 border-blue-500 pr-4 italic">قوانين الحياة الواقعية</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">قوانين - VDM</h3>
-                    <p class="text-sm text-gray-400">يمنع استخدام المركبه كا وسيلة للقتل أو الدهسه يجب عليك القيادة بشكل واقعي و منطقي</p>
+                    <h3 class="text-blue-400 font-black mb-2 uppercase italic">قوانين - VDM</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">يمنع استخدام المركبه كا وسيلة للقتل أو الدهسه يجب عليك القيادة بشكل واقعي و منطقي</p>
                 </div>
                 <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">القتل العشوائي ـ RDM</h3>
-                    <p class="text-sm text-gray-400">قتل الأشخاص بشكل عشوائي دون تهديد ـ عداوة في المناطق الامنه أو الغير امنه ممنوع منعاً باتاً</p>
+                    <h3 class="text-blue-400 font-black mb-2 uppercase italic">القتل العشوائي ـ RDM</h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">قتل الأشخاص بشكل عشوائي دون تهديد ـ عداوة في المناطق الامنه أو الغير امنه ممنوع منعاً باتاً</p>
                 </div>
             </div>
         </div>
@@ -160,30 +142,33 @@
     <section id="reviews">
         <div class="reveal w-full flex flex-col items-center">
             <div class="review-container">
+                
                 <div id="reviews-list">
                     </div>
 
                 <div class="review-form-box">
                     <div class="flex items-center justify-end gap-3 mb-6">
-                        <h2 class="text-2xl font-black">اترك تقييمك</h2>
+                        <h2 class="text-2xl font-black text-white">اترك تقييمك</h2>
                         <i class="far fa-comment-dots text-blue-500 text-2xl"></i>
                     </div>
+
                     <div class="space-y-4 text-right">
                         <div>
                             <label class="text-xs text-gray-400">اسمك</label>
-                            <input type="text" id="reviewer-name" class="input-style" placeholder="الاسم الكريم">
+                            <input type="text" id="reviewer-name" class="input-style" placeholder="الاسم داخل أو خارج اللعبة">
                         </div>
                         <div>
                             <label class="text-xs text-gray-400">عمرك</label>
                             <input type="number" id="reviewer-age" class="input-style" placeholder="18">
                         </div>
                         <div>
-                            <label class="text-xs text-gray-400">التعليق</label>
-                            <textarea id="reviewer-comment" rows="4" class="input-style" placeholder="رأيك يهمنا..."></textarea>
+                            <label class="text-xs text-gray-400">التقييم والتعليق</label>
+                            <textarea id="reviewer-comment" rows="4" class="input-style" placeholder="رأيك في السيرفر، الإدارة، أو أي اقتراحات..."></textarea>
                         </div>
                         <button onclick="submitReview()" class="btn-submit uppercase text-white">إرسال التقييم</button>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -194,49 +179,48 @@
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-        // نظام التخزين المحلي (LocalStorage)
         window.onload = function() {
-            const saved = JSON.parse(localStorage.getItem('liveZoneReviews')) || [];
-            saved.forEach(rev => displayReview(rev));
+            const savedReviews = JSON.parse(localStorage.getItem('serverReviews')) || [];
+            savedReviews.forEach(review => renderReview(review));
         };
 
         function submitReview() {
             const name = document.getElementById('reviewer-name').value;
             const age = document.getElementById('reviewer-age').value;
             const comment = document.getElementById('reviewer-comment').value;
-            const date = new Date().toLocaleDateString('ar-SA', { day: 'numeric', month: 'long', year: 'numeric' });
+            const dateStr = new Date().toLocaleDateString('ar-SA', { day: 'numeric', month: 'long', year: 'numeric' });
 
             if(name && age && comment) {
-                const reviewObj = { name, age, comment, date };
-                const saved = JSON.parse(localStorage.getItem('liveZoneReviews')) || [];
-                saved.unshift(reviewObj);
-                localStorage.setItem('liveZoneReviews', JSON.stringify(saved));
-                
-                displayReview(reviewObj, true);
+                const newReview = { name, age, comment, date: dateStr };
+                const savedReviews = JSON.parse(localStorage.getItem('serverReviews')) || [];
+                savedReviews.unshift(newReview);
+                localStorage.setItem('serverReviews', JSON.stringify(savedReviews));
+                renderReview(newReview, true);
                 
                 document.getElementById('reviewer-name').value = '';
                 document.getElementById('reviewer-age').value = '';
                 document.getElementById('reviewer-comment').value = '';
+                alert('تم استلام تقييمك، شكراً لك!');
             } else {
-                alert('يرجى تعبئة جميع الحقول');
+                alert('يرجى ملء جميع الحقول.');
             }
         }
 
-        function displayReview(data, isNew = false) {
+        function renderReview(data, isNew = false) {
             const list = document.getElementById('reviews-list');
             const div = document.createElement('div');
-            div.className = `review-card-fixed reveal active`;
+            div.className = 'review-card-fixed reveal active';
             div.innerHTML = `
                 <div class="flex justify-between items-start">
                     <span class="text-[10px] text-gray-500">${data.date}</span>
                     <div class="text-left">
-                        <div class="font-bold text-lg">${data.name}</div>
-                        <span class="bg-gray-800 text-[10px] px-2 py-0.5 rounded">العمر: ${data.age}</span>
+                        <div class="font-bold text-lg text-white">${data.name}</div>
+                        <span class="bg-gray-800 text-[10px] px-2 py-0.5 rounded text-gray-300">العمر: ${data.age}</span>
                     </div>
                 </div>
-                <p class="text-gray-400 text-sm mt-3 text-right">${data.comment}</p>
-                <div class="text-right mt-2 text-blue-900 text-[10px]">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <p class="text-gray-400 text-sm mt-3 text-right leading-relaxed">${data.comment}</p>
+                <div class="star-rating text-right">
+                    <i class="fas fa-star text-blue-900"></i><i class="fas fa-star text-blue-900"></i><i class="fas fa-star text-blue-900"></i><i class="fas fa-star text-blue-900"></i><i class="fas fa-star text-blue-900"></i>
                 </div>
             `;
             if(isNew) list.prepend(div); else list.appendChild(div);
