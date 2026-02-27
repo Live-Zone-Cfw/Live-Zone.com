@@ -13,7 +13,7 @@
         body { 
             font-family: 'Tajawal', sans-serif; 
             margin: 0; padding: 0;
-            background-color: #000;
+            background-color: #050a15;
             color: white;
             overflow-x: hidden;
         }
@@ -22,309 +22,225 @@
             position: fixed;
             top: 0; width: 100%;
             z-index: 100;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(5, 10, 21, 0.8);
             backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(0, 162, 255, 0.1);
+            border-bottom: 1px solid rgba(0, 162, 255, 0.2);
             padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .nav-links a { margin: 0 15px; font-weight: 700; transition: 0.3s; font-size: 0.9rem; }
-        .nav-links a:hover { color: #00a2ff; }
-
-        .nav-discord {
-            background: linear-gradient(90deg, #00a2ff 0%, #0055ff 100%);
-            padding: 8px 25px;
-            border-radius: 8px;
-            font-weight: 900;
-            box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
-            transition: 0.3s;
-        }
-
-        #intro {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: #000;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 1s cubic-bezier(0.85, 0, 0.15, 1);
-        }
-
-        #typewriter { font-size: 1.5rem; font-weight: 700; color: #00a2ff; min-height: 1.6em; }
-
-        .full-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 20, 50, 0.8)), 
-                        url('https://i.imgur.com/DnUcI67.png');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-        }
-
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 100px 20px; }
-
-        .rule-card {
+        /* قسم الإحصائيات */
+        .stat-card {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 162, 255, 0.1);
-            border-radius: 15px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
             padding: 20px;
-            margin-bottom: 15px;
-            width: 100%;
-            max-width: 800px;
+            border-radius: 15px;
+            text-align: center;
             transition: 0.3s;
         }
-        .rule-card:hover { border-color: #00a2ff; background: rgba(0, 162, 255, 0.05); }
+        .stat-card:hover { transform: translateY(-5px); border-color: #3b82f6; }
 
-        .staff-grid {
+        .review-container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 20px;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1100px;
         }
-        .staff-card {
+
+        .review-card-fixed {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
+            border-left: 4px solid #3b82f6;
+            border-radius: 12px;
             padding: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
+            position: relative;
+            margin-bottom: 15px;
         }
-        .staff-card:hover { transform: translateY(-5px); border-color: #00a2ff; }
 
-        /* ستايل النموذج المحسن - أزرق احترافي */
-        input, textarea {
-            background: rgba(0, 0, 0, 0.5) !important;
-            border: 1px solid rgba(0, 162, 255, 0.4) !important;
-            border-radius: 10px;
+        .review-form-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            height: fit-content;
+        }
+
+        .input-style {
+            background: #000 !important;
+            border: 1px solid #1a1a1a !important;
+            border-radius: 8px;
+            color: #fff !important;
             padding: 12px;
-            color: white !important;
             width: 100%;
-            margin-top: 8px;
+            margin-top: 5px;
             outline: none;
-            transition: 0.3s;
         }
-        input:focus, textarea:focus { border-color: #00a2ff !important; box-shadow: 0 0 10px rgba(0, 162, 255, 0.2); }
 
-        .form-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 1px solid rgba(0, 162, 255, 0.2); width: 100%; max-width: 600px; }
+        .btn-submit { background: #3b82f6; width: 100%; padding: 12px; border-radius: 10px; font-weight: 900; margin-top: 20px; transition: 0.3s; }
+        .btn-submit:hover { background: #2563eb; transform: translateY(-2px); }
+
+        .btn-rules { background: white; color: #1e3a8a; padding: 12px 35px; border-radius: 10px; font-weight: 900; }
+        .btn-support { background: rgba(30, 58, 138, 0.4); border: 1px solid #3b82f6; padding: 12px 35px; border-radius: 10px; font-weight: 900; }
+
+        .reveal { opacity: 0; transform: translateY(20px); transition: 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 20px; }
         
-        .scroll-down { position: absolute; bottom: 30px; animation: bounce 2s infinite; color: #00a2ff; font-size: 2rem; cursor: pointer; }
-        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
+        @media (max-width: 768px) { .review-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <div id="intro">
-        <h2 class="text-4xl font-black text-white mb-4 italic">LIVE <span class="text-blue-500">ZONE CFW</span></h2>
-        <div id="typewriter"></div>
-    </div>
-
     <nav>
         <div class="text-xl font-black italic">LIVE <span class="text-blue-500">ZONE</span></div>
-        <div class="hidden md:flex nav-links text-white">
-            <a href="#hero">الرئيسية</a>
-            <a href="#rules">القوانين</a>
-            <a href="#owners">الإدارة</a>
-            <a href="#reviews">التقييمات</a>
+        <div class="hidden md:flex gap-6">
+            <a href="#hero" class="font-bold hover:text-blue-500">الرئيسية</a>
+            <a href="#stats" class="font-bold hover:text-blue-500">الإحصائيات</a>
+            <a href="#rules" class="font-bold hover:text-blue-500">القوانين</a>
+            <a href="#reviews" class="font-bold hover:text-blue-500">التقييمات</a>
         </div>
-        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="nav-discord text-white">ديسكورد</a>
+        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="bg-blue-600 px-6 py-2 rounded-lg font-black text-sm">ديسكورد</a>
     </nav>
 
-    <div class="full-bg"></div>
-
     <section id="hero">
-        <div class="reveal flex flex-col items-center text-center">
-            <div class="bg-blue-500/20 text-blue-400 border border-blue-500 px-5 py-1 rounded-full font-black text-xs mb-8 uppercase">Under Maintenance | قيد الصيانة</div>
-            <img src="https://i.imgur.com/GA9axDq.jpeg" alt="Live Zone" class="w-32 h-32 rounded-full border-4 border-blue-500 mb-6 shadow-2xl">
-            <h1 class="text-6xl md:text-8xl font-black italic uppercase mb-4">LIVE <span class="text-blue-500">ZONE CFW</span></h1>
-            <p class="max-w-xl text-lg font-bold text-slate-300">نعمل حالياً على تطوير تجربة فريدة لكم في عالم روبلوكس.. انتظرونا قريباً.</p>
+        <div class="reveal text-center">
+            <img src="https://i.imgur.com/GA9axDq.jpeg" class="w-32 h-32 rounded-full border-4 border-blue-500 mx-auto mb-6">
+            <h1 class="text-6xl md:text-7xl font-black italic mb-4 uppercase text-white">LIVE <span class="text-blue-500">ZONE CFW</span></h1>
+            <p class="text-gray-400 font-bold">نعمل على تقديم تجربة واقعية استثنائية.</p>
+            
+            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                <a href="#rules" class="btn-rules">دستور السيرفر</a>
+                <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="btn-support text-white">الدعم الفني</a>
+            </div>
         </div>
-        <a href="#rules" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </section>
 
-    <section id="rules" class="bg-black/40">
+    <section id="stats" class="bg-black/10">
+        <div class="reveal w-full max-w-4xl px-4">
+            <h2 class="text-3xl font-black mb-10 text-center text-blue-500 uppercase italic">Server Stats | إحصائيات المجتمع</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="stat-card">
+                    <i class="fas fa-users text-4xl text-blue-500 mb-4"></i>
+                    <div class="text-3xl font-black">974</div>
+                    <div class="text-gray-400 text-sm">عضو في المجتمع</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-car text-4xl text-blue-500 mb-4"></i>
+                    <div class="text-3xl font-black">+150</div>
+                    <div class="text-gray-400 text-sm">مركبة واقعية</div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-shield-alt text-4xl text-blue-500 mb-4"></i>
+                    <div class="text-3xl font-black">24/7</div>
+                    <div class="text-gray-400 text-sm">حماية ودعم فني</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="rules" class="bg-black/20 w-full">
         <div class="reveal w-full max-w-4xl px-4">
             <h2 class="text-4xl font-black mb-10 text-right border-r-4 border-blue-500 pr-4 italic">قوانين الحياة الواقعية</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="rule-card">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-right">
+                <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
                     <h3 class="text-blue-400 font-black mb-2 uppercase">قوانين - VDM</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">يمنع استخدام المركبه كا وسيلة للقتل أو الدهسه يجب عليك القيادة بشكل واقعي و منطقي</p>
+                    <p class="text-sm text-gray-400">يمنع استخدام المركبه كا وسيلة للقتل أو الدهسه يجب عليك القيادة بشكل واقعي و منطقي</p>
                 </div>
-                <div class="rule-card">
+                <div class="bg-white/5 p-6 rounded-xl border border-white/10 hover:border-blue-500 transition">
                     <h3 class="text-blue-400 font-black mb-2 uppercase">القتل العشوائي ـ RDM</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">قتل الأشخاص بشكل عشوائي دون تهديد ـ عداوة في المناطق الامنه أو الغير امنه ممنوع منعاً باتاً</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">تقدير الحياة ـ Appreciatinglife</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">يجيب عليك الخوف على حياتك بشكل واقعي و عدم الذهاب للمناطق الخطره</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">الحياة الجديدة ـ NRL</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">في حال تم اسقاطك يمنع التكلم ـ في حال التحلل لا يمكنك تذكر ماذا حدث لك</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">الباور جيمنج ـ Power Gaming</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">يمنع استخدام وسائل خارج الرول للتواصل مع الآخرين</p>
-                </div>
-                <div class="rule-card">
-                    <h3 class="text-blue-400 font-black mb-2 uppercase">الميتاجيمنج ـ Metagaming</h3>
-                    <p class="text-sm text-gray-300 leading-relaxed">اخذ معلومات من خارج الرول مثل ديسكورد أو بث أو اي طريقه اخرى</p>
+                    <p class="text-sm text-gray-400">قتل الأشخاص بشكل عشوائي دون تهديد ـ عداوة في المناطق الامنه أو الغير امنه ممنوع منعاً باتاً</p>
                 </div>
             </div>
-
-            <h2 class="text-4xl font-black mt-16 mb-10 text-right border-r-4 border-blue-500 pr-4 italic">قوانين الديسكورد</h2>
-            <div class="rule-card border-dashed">
-                <ul class="grid grid-cols-1 md:grid-cols-2 gap-y-3 text-sm text-gray-200 list-decimal list-inside pr-4">
-                    <li>يمنع السب بجميع انواعه</li>
-                    <li>يمنع السبام</li>
-                    <li>يمنع نشر روابط</li>
-                    <li>يمنع سحب الأعضاء للخاص</li>
-                    <li>يجب احترام جميع الأعضاء</li>
-                    <li>يمنع التسبب في مشاكل</li>
-                    <li>يمنع الكلام في المواضيع السياسية</li>
-                    <li>يمنع استخدام الأوامر في العام</li>
-                </ul>
-            </div>
-
-            <div class="mt-8 bg-red-600/20 border border-red-600 p-4 rounded-xl text-center">
-                <p class="font-black text-red-500">تنبيه مهم 🛑: تجاوزك لهاذي القوانين قد يعرضك للباند 24 ساعه إلى 42 ساعه</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="owners">
-        <div class="reveal flex flex-col items-center w-full">
-            <h2 class="text-4xl font-black mb-12 italic text-blue-500 uppercase">Administration | الإدارة</h2>
-            
-            <div class="owner-card flex flex-col items-center gap-4 mb-12 transform scale-110 border-blue-500 bg-white/5 p-8 rounded-2xl border">
-                <img src="https://i.imgur.com/7fG6atc.jpeg" class="w-24 h-24 rounded-full border-4 border-blue-500 shadow-2xl">
-                <h3 class="text-2xl font-black">#-zynox</h3>
-                <span class="bg-blue-500 text-black px-4 py-1 rounded font-black text-xs uppercase">Founder / المالك</span>
-            </div>
-
-            <div class="staff-grid">
-                <div class="staff-card">
-                    <div class="text-blue-400 font-black text-lg">Admin Name</div>
-                    <div class="text-xs text-gray-500 uppercase mt-1">Administrator</div>
-                </div>
-                <div class="staff-card">
-                    <div class="text-blue-400 font-black text-lg">Staff Name</div>
-                    <div class="text-xs text-gray-500 uppercase mt-1">Moderator</div>
-                </div>
-                </div>
         </div>
     </section>
 
     <section id="reviews">
-        <div class="reveal flex flex-col items-center w-full px-4">
-            <div id="start-form-container">
-                <button onclick="confirmEntry()" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-xl font-bold text-xl transition-all shadow-lg uppercase">هل أنت متأكد أنك تود التقييم؟</button>
+        <div class="reveal w-full flex flex-col items-center">
+            <div class="review-container">
+                <div id="reviews-list">
+                    </div>
+
+                <div class="review-form-box">
+                    <div class="flex items-center justify-end gap-3 mb-6">
+                        <h2 class="text-2xl font-black">اترك تقييمك</h2>
+                        <i class="far fa-comment-dots text-blue-500 text-2xl"></i>
+                    </div>
+                    <div class="space-y-4 text-right">
+                        <div>
+                            <label class="text-xs text-gray-400">اسمك</label>
+                            <input type="text" id="reviewer-name" class="input-style" placeholder="الاسم الكريم">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-400">عمرك</label>
+                            <input type="number" id="reviewer-age" class="input-style" placeholder="18">
+                        </div>
+                        <div>
+                            <label class="text-xs text-gray-400">التعليق</label>
+                            <textarea id="reviewer-comment" rows="4" class="input-style" placeholder="رأيك يهمنا..."></textarea>
+                        </div>
+                        <button onclick="submitReview()" class="btn-submit uppercase text-white">إرسال التقييم</button>
+                    </div>
+                </div>
             </div>
-            
-            <div id="evaluation-form" class="hidden form-card mt-8">
-                <div class="mb-6 text-right">
-                    <label class="text-blue-400 font-black block mb-1">اسمك :</label>
-                    <input type="text" id="reviewer-name" placeholder="أدخل اسمك...">
-                </div>
-                <div class="mb-6 text-right">
-                    <label class="text-blue-400 font-black block mb-1">عمرك :</label>
-                    <input type="number" id="reviewer-age" placeholder="أدخل عمرك...">
-                </div>
-                <div class="mb-6 text-right">
-                    <label class="text-blue-400 font-black block mb-1">تقييمك :</label>
-                    <textarea id="reviewer-comment" rows="3" placeholder="اكتب تقييمك هنا..."></textarea>
-                </div>
-                <button onclick="submitReview()" class="bg-blue-500 hover:bg-blue-600 w-full py-4 rounded-xl font-black text-white transition-all">إرسال التقييم</button>
-            </div>
-            
-            <div class="w-full max-w-2xl mt-16"><div id="reviews-list"></div></div>
         </div>
     </section>
 
     <script>
-        const text = "جاري تحضير أفضل بيئة رول بلاي...";
-        let i = 0;
-        function typeWriter() {
-            if (i < text.length) {
-                document.getElementById("typewriter").innerHTML += text.charAt(i);
-                i++; setTimeout(typeWriter, 80);
-            } else {
-                setTimeout(() => {
-                    document.getElementById("intro").style.transform = "translateY(-100%)";
-                    setTimeout(activateReveals, 500);
-                    loadReviews();
-                }, 800);
-            }
-        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-        function confirmEntry() {
-            document.getElementById('start-form-container').style.display = 'none';
-            document.getElementById('evaluation-form').classList.remove('hidden');
-        }
+        // نظام التخزين المحلي (LocalStorage)
+        window.onload = function() {
+            const saved = JSON.parse(localStorage.getItem('liveZoneReviews')) || [];
+            saved.forEach(rev => displayReview(rev));
+        };
 
         function submitReview() {
             const name = document.getElementById('reviewer-name').value;
             const age = document.getElementById('reviewer-age').value;
             const comment = document.getElementById('reviewer-comment').value;
-            const now = new Date();
-            const timeStr = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
+            const date = new Date().toLocaleDateString('ar-SA', { day: 'numeric', month: 'long', year: 'numeric' });
 
             if(name && age && comment) {
-                const reviewData = { name, age, comment, time: timeStr };
-                let reviews = JSON.parse(localStorage.getItem('livezone_reviews')) || [];
-                reviews.unshift(reviewData);
-                localStorage.setItem('livezone_reviews', JSON.stringify(reviews));
-                renderReview(reviewData);
+                const reviewObj = { name, age, comment, date };
+                const saved = JSON.parse(localStorage.getItem('liveZoneReviews')) || [];
+                saved.unshift(reviewObj);
+                localStorage.setItem('liveZoneReviews', JSON.stringify(saved));
+                
+                displayReview(reviewObj, true);
+                
                 document.getElementById('reviewer-name').value = '';
                 document.getElementById('reviewer-age').value = '';
                 document.getElementById('reviewer-comment').value = '';
-                document.getElementById('evaluation-form').classList.add('hidden');
-                document.getElementById('start-form-container').style.display = 'block';
-                alert('تم إرسال تقييمك بنجاح!');
             } else {
-                alert('الرجاء تعبئة كافة الحقول!');
+                alert('يرجى تعبئة جميع الحقول');
             }
         }
 
-        function loadReviews() {
-            let reviews = JSON.parse(localStorage.getItem('livezone_reviews')) || [];
-            reviews.forEach(r => renderReview(r));
-        }
-
-        function renderReview(data) {
+        function displayReview(data, isNew = false) {
             const list = document.getElementById('reviews-list');
             const div = document.createElement('div');
-            div.className = 'bg-white/5 p-6 rounded-2xl mb-4 border-r-4 border-blue-500 text-right backdrop-blur-sm';
+            div.className = `review-card-fixed reveal active`;
             div.innerHTML = `
-                <div class="flex justify-between text-xs text-blue-300/60 mb-2">
-                    <span><i class="far fa-clock ml-1"></i> ${data.time}</span>
-                    <span>عمر: ${data.age}</span>
+                <div class="flex justify-between items-start">
+                    <span class="text-[10px] text-gray-500">${data.date}</span>
+                    <div class="text-left">
+                        <div class="font-bold text-lg">${data.name}</div>
+                        <span class="bg-gray-800 text-[10px] px-2 py-0.5 rounded">العمر: ${data.age}</span>
+                    </div>
                 </div>
-                <div class="font-black text-blue-400 text-lg mb-1">${data.name}</div>
-                <p class="text-gray-300 text-sm leading-relaxed">${data.comment}</p>
+                <p class="text-gray-400 text-sm mt-3 text-right">${data.comment}</p>
+                <div class="text-right mt-2 text-blue-900 text-[10px]">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
             `;
-            list.prepend(div);
+            if(isNew) list.prepend(div); else list.appendChild(div);
         }
-
-        function activateReveals() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
-        }
-        window.onload = typeWriter;
     </script>
 </body>
 </html>
