@@ -3,139 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Zone | قيد الصيانة</title>
+    <title>Live Zone | Under Maintenance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        /* استيراد خطوط جوجل لتعطي مظهراً احترافياً */
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
-
-        /* تنسيقات الصفحة الأساسية */
-        body, html {
+        
+        body { 
+            font-family: 'Tajawal', sans-serif; 
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Tajawal', sans-serif;
-            background-color: #000; /* لون احتياطي أسود */
-            overflow: hidden; /* لمنع ظهور شريط التمرير */
-        }
-
-        /* تنسيق الخلفية بالصورة المطلوبة */
-        .bg-image {
-            background-image: url('https://i.imgur.com/DnUcI67.png');
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover; /* لجعل الصورة تغطي كامل الشاشة بشكل متناسق */
-            filter: blur(5px); /* إضافة تأثير ضبابي خفيف للخلفية */
-            position: absolute;
-            width: 100%;
-            z-index: -1; /* لجعل الخلفية خلف المحتوى */
-        }
-
-        /* طبقة فوق الخلفية لتعطي لوناً أزرق داكناً وشفافاً */
-        .overlay {
-            position: absolute;
-            height: 100%;
-            width: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 50, 100, 0.8)); /* تدرج من الأسود إلى الأزرق */
-            z-index: 0;
-        }
-
-        /* حاوية المحتوى الرئيسي في منتصف الشاشة */
-        .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
+            background-color: #000;
             color: white;
-            text-align: center;
-            position: relative;
-            z-index: 1; /* لجعل المحتوى فوق الخلفية والطبقة الشفافة */
+            height: 100vh;
+            overflow: hidden;
         }
 
-        .main-container {
-            background: rgba(0, 0, 0, 0.5); /* خلفية سوداء شفافة جزئياً للمحتوى */
-            padding: 50px;
-            border-radius: 20px;
-            border: 2px solid #00d2ff; /* إطار أزرق فاتح */
-            box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); /* تأثير توهج أزرق */
-            backdrop-filter: blur(10px); /* تأثير ضبابي للخلفية خلف الحاوية */
+        /* الخلفية المطلوبة بدون تغبيش وبكامل دقتها */
+        .full-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 20, 50, 0.6)), 
+                        url('https://i.imgur.com/DnUcI67.png');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
         }
 
-        /* حاوية صورة السيرفر وكلام الصيانة في سطر واحد */
-        .maintenance-header {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px; /* مسافة بين الصورة والنص */
-            margin-bottom: 30px;
+        /* تأثير التوهج الأزرق للنصوص */
+        .glow-text {
+            text-shadow: 0 0 20px rgba(0, 162, 255, 0.8), 0 0 40px rgba(0, 162, 255, 0.4);
         }
 
-        /* تنسيق صورة السيرفر لتكون دائرية */
-        .server-logo {
+        /* صورة السيرفر الدائرية */
+        .server-img {
             width: 120px;
             height: 120px;
-            border-radius: 50%; /* لجعل الصورة دائرية تماماً */
-            border: 4px solid #00d2ff; /* إطار أزرق فاتح حول الصورة */
-            object-fit: cover; /* لضمان عدم تشوه الصورة داخل الإطار */
-            box-shadow: 0 0 15px rgba(0, 210, 255, 0.7); /* تأثير توهج حول الصورة */
+            border-radius: 50%;
+            border: 4px solid #00a2ff;
+            object-fit: cover;
+            box-shadow: 0 0 25px rgba(0, 162, 255, 0.6);
         }
 
-        /* تنسيق نصوص الصيانة */
-        .server-name {
-            font-size: 3rem;
+        .maintenance-tag {
+            background: rgba(0, 162, 255, 0.2);
+            color: #00a2ff;
+            border: 1px solid #00a2ff;
+            padding: 5px 20px;
+            border-radius: 50px;
             font-weight: 900;
-            color: #fff;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 210, 255, 0.8); /* تأثير توهج أزرق للنص */
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
         }
 
-        .maintenance-text {
-            font-size: 1.5rem;
-            color: #cbd5e1; /* لون رمادي فاتح للنص الثانوي */
-            margin-top: 10px;
-        }
-
-        /* تنسيق معلومات المطور "سعود" */
-        .developer-info {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 210, 255, 0.3); /* خط فاصلي أزرق شفاف */
-        }
-
-        .developer-name {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .developer-role {
-            font-size: 1rem;
-            color: #00d2ff; /* لون أزرق فاتح للدور */
+        .dev-section {
+            margin-top: 30px;
+            border-right: 3px solid #00a2ff;
+            padding-right: 15px;
         }
     </style>
 </head>
-<body>
+<body class="flex items-center justify-center">
 
-    <div class="bg-image"></div>
-    <div class="overlay"></div>
+    <div class="full-bg"></div>
 
-    <div class="content">
-        <div class="main-container">
-            <div class="maintenance-header">
-                <img src="https://i.imgur.com/RQORKl0.png" alt="Live Zone Server Logo" class="server-logo">
-                <div class="title-container">
-                    <h1 class="server-name">Live Zone</h1>
-                    <div class="maintenance-text">الموقع حالياً قيد الصيانة</div>
-                </div>
-            </div>
-
-            <div class="developer-info">
-                <div class="developer-name">سعود</div>
-                <div class="developer-role">مسؤول تطوير الموقع</div>
+    <div class="relative z-10 flex flex-col items-center text-center px-6">
+        
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-6">
+            <img src="https://i.imgur.com/GA9axDq.jpeg" alt="Live Zone" class="server-img">
+            
+            <div class="text-right">
+                <div class="maintenance-tag">UNDER MAINTENANCE | قيد الصيانة</div>
+                <h1 class="text-6xl md:text-8xl font-black glow-text italic uppercase tracking-tighter">
+                    LIVE <span class="text-blue-500">ZONE</span>
+                </h1>
             </div>
         </div>
+
+        <div class="max-w-xl">
+            <p class="text-xl md:text-2xl text-slate-200 font-bold mb-8 leading-relaxed">
+                نعمل حالياً على تطوير تجربة فريدة لكم في عالم روبلوكس.. انتظرونا قريباً بأقوى الأنظمة والمميزات.
+            </p>
+
+            <div class="dev-section text-right">
+                <h3 class="text-2xl font-black text-white">سعود</h3>
+                <p class="text-blue-400 font-bold">مسؤول تطوير الموقع</p>
+            </div>
+        </div>
+
     </div>
 
 </body>
