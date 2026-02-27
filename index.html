@@ -3,237 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Zone Shop | متجر لايف زون</title>
+    <title>Live Zone | المتجر الرسمي</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
         
-        * { scroll-behavior: smooth; }
         body { 
             font-family: 'Tajawal', sans-serif; 
-            margin: 0; padding: 0;
-            background-color: #050a15;
-            color: white;
+            background-color: #020202; 
+            color: #ffffff;
+            margin: 0;
             overflow-x: hidden;
         }
 
-        /* خلفية المتجر المتحركة */
-        .bg-overlay {
+        /* خلفية سينمائية */
+        .hero-bg {
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
-            background: radial-gradient(circle at top right, rgba(0, 162, 255, 0.15), transparent),
-                        radial-gradient(circle at bottom left, rgba(0, 85, 255, 0.1), transparent);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), #020202), 
+                        url('https://i.imgur.com/DnUcI67.png');
+            background-size: cover;
+            background-position: center;
             z-index: -1;
+            filter: brightness(0.4);
         }
 
         nav {
-            position: fixed;
-            top: 0; width: 100%;
-            z-index: 100;
-            background: rgba(5, 10, 21, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 162, 255, 0.1);
-            padding: 15px 40px;
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 2px solid #0062ff;
+            padding: 20px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        /* بطاقات المتجر الاحترافية */
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            width: 100%;
-            max-width: 1100px;
-            margin-top: 50px;
+        .store-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
         }
 
-        .package-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 162, 255, 0.1);
-            border-radius: 24px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* كروت الخدمات */
+        .service-card {
+            background: linear-gradient(145deg, #0a0a0a, #111);
+            border: 1px solid #1a1a1a;
+            border-radius: 5px; /* حواف حادة لتعطي طابع رسمي */
+            padding: 40px;
+            transition: 0.4s;
             position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .package-card:hover {
-            transform: translateY(-10px);
-            border-color: #00a2ff;
-            background: rgba(0, 162, 255, 0.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        .service-card:hover {
+            border-color: #0062ff;
+            box-shadow: 0 0 30px rgba(0, 98, 255, 0.2);
+            transform: translateY(-5px);
         }
 
-        .package-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-            transition: 0.5s;
+        .service-card h3 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #0062ff;
         }
 
-        .package-card:hover::before { left: 100%; }
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 3px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #888;
+        }
 
-        .price-tag { font-size: 2.5rem; font-weight: 900; color: #00a2ff; margin: 15px 0; }
-        .price-tag span { font-size: 1rem; color: #aaa; margin-right: 5px; }
+        .feature-list {
+            margin: 20px 0;
+            border-top: 1px solid #1a1a1a;
+            padding-top: 20px;
+        }
 
-        .feature-item {
+        .feature-list li {
+            list-style: none;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #bbb;
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-bottom: 12px;
-            color: #ccc;
-            font-size: 0.95rem;
         }
-        .feature-item i { color: #00a2ff; }
 
-        .btn-buy {
-            width: 100%;
+        .feature-list li i { color: #0062ff; font-size: 0.8rem; }
+
+        /* زر الشراء */
+        .btn-action {
+            background: #0062ff;
+            color: white;
+            text-align: center;
             padding: 15px;
-            border-radius: 12px;
-            background: linear-gradient(90deg, #00a2ff, #0055ff);
             font-weight: 900;
-            margin-top: 25px;
+            text-transform: uppercase;
+            border-radius: 3px;
             transition: 0.3s;
             cursor: pointer;
-            opacity: 0.8;
+            margin-top: 20px;
         }
 
-        /* تنبيه الصيانة */
-        .maintenance-notice {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-            padding: 12px;
-            border-radius: 10px;
-            font-size: 0.85rem;
+        .btn-action:hover { background: #004ecc; }
+
+        /* تنبيه الصيانة الاحترافي */
+        .maintenance-footer {
+            background: #620000;
+            color: #ff9b9b;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.8rem;
             font-weight: 700;
+            border-radius: 3px;
             margin-top: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
         }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        #intro {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: #050a15;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: 1s ease-in-out;
+        .section-title {
+            text-align: right;
+            border-right: 5px solid #0062ff;
+            padding-right: 15px;
+            margin-bottom: 50px;
         }
 
-        .badge-premium {
-            background: gold;
-            color: black;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 900;
-            position: absolute;
-            top: 20px; right: 20px;
-            text-transform: uppercase;
-        }
+        .section-title h2 { font-size: 2.5rem; font-weight: 900; text-transform: uppercase; }
+        .section-title p { color: #666; }
     </style>
 </head>
 <body>
 
-    <div id="intro">
-        <h2 class="text-4xl font-black italic">LIVE <span class="text-blue-500">ZONE SHOP</span></h2>
-    </div>
-
-    <div class="bg-overlay"></div>
+    <div class="hero-bg"></div>
 
     <nav>
-        <div class="text-xl font-black italic">LIVE <span class="text-blue-500">ZONE</span></div>
-        <div class="hidden md:flex gap-8 items-center">
-            <a href="#" class="font-bold hover:text-blue-500 transition">المتجر الرئيسي</a>
-            <a href="#" class="font-bold hover:text-blue-500 transition">طرق الدفع</a>
-            <a href="#" class="font-bold hover:text-blue-500 transition">الدعم</a>
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-blue-600 rounded flex items-center justify-center font-black">LZ</div>
+            <div class="text-2xl font-black italic">LIVE <span class="text-blue-600">ZONE</span></div>
         </div>
-        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="bg-blue-600 px-6 py-2 rounded-lg font-black text-sm hover:scale-105 transition shadow-lg shadow-blue-500/20">ديسكورد</a>
+        <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="border border-blue-600 px-6 py-2 text-blue-600 font-black hover:bg-blue-600 hover:text-white transition">DISCORD SERVER</a>
     </nav>
 
-    <section>
-        <div class="reveal text-center mt-10">
-            <h1 class="text-5xl md:text-7xl font-black italic uppercase mb-4">متجر <span class="text-blue-500">الاشتراكات</span></h1>
-            <p class="text-gray-400 font-bold max-w-2xl mx-auto">ارتقِ بتجربتك في سيرفر لايف زون مع حزم التميز والسرعة.</p>
-
-            <div class="shop-grid mx-auto px-4">
-                
-                <div class="package-card">
-                    <i class="fas fa-bolt text-4xl text-yellow-400 mb-4"></i>
-                    <h3 class="text-2xl font-black">حزمة التفعيل الفوري</h3>
-                    <div class="price-tag">25 <span>ريال</span></div>
-                    <div class="space-y-3">
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> تخطي قائمة الانتظار نهائياً</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> دخول تلقائي للسيرفر</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> رتبة "نشط فورياً" في الديسكورد</div>
-                    </div>
-                    <button class="btn-buy cursor-not-allowed">غير متوفر حالياً</button>
-                    <div class="maintenance-notice">
-                        <i class="fas fa-tools"></i> المتجر تحت الصيانة
-                    </div>
-                </div>
-
-                <div class="package-card border-blue-500 bg-blue-500/5">
-                    <div class="badge-premium">الأكثر طلباً</div>
-                    <i class="fas fa-crown text-4xl text-blue-500 mb-4"></i>
-                    <h3 class="text-2xl font-black">أولوية في التفعيل</h3>
-                    <div class="price-tag">50 <span>ريال</span></div>
-                    <div class="space-y-3 text-right">
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> معالجة طلبك قبل الجميع</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> تفعيل العضوية في أقل من ساعة</div>
-                        <div class="feature-item"><i class="fas fa-check-circle"></i> دعم فني مخصص للأولويات</div>
-                    </div>
-                    <button class="btn-buy cursor-not-allowed">غير متوفر حالياً</button>
-                    <div class="maintenance-notice">
-                        <i class="fas fa-tools"></i> المتجر تحت الصيانة
-                    </div>
-                </div>
-
-            </div>
+    <div class="store-container">
+        
+        <div class="section-title">
+            <h2>Services Department | قسم الخدمات</h2>
+            <p>اختر الخدمة المطلوبة لبدء إجراءات التفعيل</p>
         </div>
-    </section>
 
-    <footer class="py-10 text-center border-t border-white/5 mt-20">
-        <p class="text-gray-500 text-sm font-bold">جميع الحقوق محفوظة لـ <span class="text-blue-500">LIVE ZONE CFW</span> &copy; 2026</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="service-card">
+                <div>
+                    <span class="status-badge">Category: Fast Track</span>
+                    <h3>تفعيل فوري</h3>
+                    <p class="text-gray-400 text-sm">خدمة تتيح لك تجاوز فترات الانتظار الطويلة والدخول إلى عالم الرول بلاي مباشرة.</p>
+                    
+                    <ul class="feature-list text-right">
+                        <li><i class="fas fa-angle-left"></i> تخطي طابور الانتظار (Queue Bypass)</li>
+                        <li><i class="fas fa-angle-left"></i> تفعيل العضوية في قاعدة البيانات فورياً</li>
+                        <li><i class="fas fa-angle-left"></i> رتبة خاصة في مجتمع الديسكورد</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="btn-action opacity-50 cursor-not-allowed">طلب الخدمة</div>
+                    <div class="maintenance-footer">
+                        <i class="fas fa-exclamation-triangle"></i> النظام تحت الصيانة حالياً
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div>
+                    <span class="status-badge">Category: Priority</span>
+                    <h3>أولوية في التفعيل</h3>
+                    <p class="text-gray-400 text-sm">معالجة طلبات الانضمام الخاصة بك من قبل الإدارة العليا كأولوية قصوى.</p>
+                    
+                    <ul class="feature-list text-right">
+                        <li><i class="fas fa-angle-left"></i> مراجعة ملف الشخصية بشكل عاجل</li>
+                        <li><i class="fas fa-angle-left"></i> أولوية في المقابلات الصوتية</li>
+                        <li><i class="fas fa-angle-left"></i> دعم فني مباشر VIP</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="btn-action opacity-50 cursor-not-allowed">طلب الخدمة</div>
+                    <div class="maintenance-footer">
+                        <i class="fas fa-exclamation-triangle"></i> النظام تحت الصيانة حالياً
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-20 p-8 border border-dashed border-gray-800 rounded text-center">
+            <h4 class="text-gray-500 font-bold mb-2">هل تحتاج إلى مساعدة إضافية؟</h4>
+            <p class="text-gray-600 text-sm mb-6">يمكنك دائماً فتح تذكرة دعم فني عبر الديسكورد الرسمي للسيرفر.</p>
+            <a href="https://discord.gg/7aPrMAYa8" class="text-blue-600 font-black underline">OPEN SUPPORT TICKET</a>
+        </div>
+
+    </div>
+
+    <footer class="py-10 text-center text-gray-700 text-xs font-bold border-t border-gray-900">
+        LIVE ZONE ROLEPLAY &copy; 2026 | ALL RIGHTS RESERVED
     </footer>
 
-    <script>
-        // أنيميشن الدخول
-        window.onload = () => {
-            setTimeout(() => {
-                document.getElementById('intro').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('intro').style.display = 'none';
-                    activateReveals();
-                }, 1000);
-            }, 1500);
-        };
-
-        function activateReveals() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { 
-                    if (entry.isIntersecting) entry.target.classList.add('active'); 
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
-        }
-    </script>
 </body>
 </html>
- 
