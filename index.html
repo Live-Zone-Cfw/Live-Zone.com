@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Zone | قيد الصيانة</title>
+    <style>
+        /* استيراد خطوط جوجل لتعطي مظهراً احترافياً */
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap');
+
+        /* تنسيقات الصفحة الأساسية */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Tajawal', sans-serif;
+            background-color: #000; /* لون احتياطي أسود */
+            overflow: hidden; /* لمنع ظهور شريط التمرير */
+        }
+
+        /* تنسيق الخلفية بالصورة المطلوبة */
+        .bg-image {
+            background-image: url('https://i.imgur.com/DnUcI67.png');
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover; /* لجعل الصورة تغطي كامل الشاشة بشكل متناسق */
+            filter: blur(5px); /* إضافة تأثير ضبابي خفيف للخلفية */
+            position: absolute;
+            width: 100%;
+            z-index: -1; /* لجعل الخلفية خلف المحتوى */
+        }
+
+        /* طبقة فوق الخلفية لتعطي لوناً أزرق داكناً وشفافاً */
+        .overlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 50, 100, 0.8)); /* تدرج من الأسود إلى الأزرق */
+            z-index: 0;
+        }
+
+        /* حاوية المحتوى الرئيسي في منتصف الشاشة */
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+            position: relative;
+            z-index: 1; /* لجعل المحتوى فوق الخلفية والطبقة الشفافة */
+        }
+
+        .main-container {
+            background: rgba(0, 0, 0, 0.5); /* خلفية سوداء شفافة جزئياً للمحتوى */
+            padding: 50px;
+            border-radius: 20px;
+            border: 2px solid #00d2ff; /* إطار أزرق فاتح */
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.5); /* تأثير توهج أزرق */
+            backdrop-filter: blur(10px); /* تأثير ضبابي للخلفية خلف الحاوية */
+        }
+
+        /* حاوية صورة السيرفر وكلام الصيانة في سطر واحد */
+        .maintenance-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px; /* مسافة بين الصورة والنص */
+            margin-bottom: 30px;
+        }
+
+        /* تنسيق صورة السيرفر لتكون دائرية */
+        .server-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* لجعل الصورة دائرية تماماً */
+            border: 4px solid #00d2ff; /* إطار أزرق فاتح حول الصورة */
+            object-fit: cover; /* لضمان عدم تشوه الصورة داخل الإطار */
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.7); /* تأثير توهج حول الصورة */
+        }
+
+        /* تنسيق نصوص الصيانة */
+        .server-name {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #fff;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.8); /* تأثير توهج أزرق للنص */
+        }
+
+        .maintenance-text {
+            font-size: 1.5rem;
+            color: #cbd5e1; /* لون رمادي فاتح للنص الثانوي */
+            margin-top: 10px;
+        }
+
+        /* تنسيق معلومات المطور "سعود" */
+        .developer-info {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 210, 255, 0.3); /* خط فاصلي أزرق شفاف */
+        }
+
+        .developer-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .developer-role {
+            font-size: 1rem;
+            color: #00d2ff; /* لون أزرق فاتح للدور */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-image"></div>
+    <div class="overlay"></div>
+
+    <div class="content">
+        <div class="main-container">
+            <div class="maintenance-header">
+                <img src="https://i.imgur.com/RQORKl0.png" alt="Live Zone Server Logo" class="server-logo">
+                <div class="title-container">
+                    <h1 class="server-name">Live Zone</h1>
+                    <div class="maintenance-text">الموقع حالياً قيد الصيانة</div>
+                </div>
+            </div>
+
+            <div class="developer-info">
+                <div class="developer-name">سعود</div>
+                <div class="developer-role">مسؤول تطوير الموقع</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
