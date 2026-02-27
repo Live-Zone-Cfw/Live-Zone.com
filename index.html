@@ -26,6 +26,7 @@ justify-content:center;
 align-items:center;
 text-align:center;
 background:radial-gradient(circle at center,#0a1f3d 0%,#000 80%);
+padding:0 20px;
 }
 
 .hero h1{
@@ -36,8 +37,10 @@ text-shadow:0 0 25px #00aaff;
 
 .hero p{
 margin-top:15px;
-color:#aaa;
-font-size:18px;
+color:#ccc;
+font-size:20px;
+line-height:1.6;
+max-width:800px;
 }
 
 .enter-btn{
@@ -72,7 +75,7 @@ text-shadow:0 0 15px #00aaff;
 .products{
 display:flex;
 justify-content:center;
-gap:80px;
+gap:60px;
 flex-wrap:wrap;
 margin-top:60px;
 }
@@ -81,13 +84,13 @@ margin-top:60px;
 background:rgba(0,0,0,0.7);
 border:3px solid #00aaff;
 width:350px;
-height:350px;
-border-radius:50%;
+height:auto;
+border-radius:20px;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-padding:30px;
+padding:20px;
 box-shadow:0 0 30px rgba(0,170,255,0.4);
 transition:.3s;
 }
@@ -95,6 +98,14 @@ transition:.3s;
 .product:hover{
 transform:scale(1.05);
 box-shadow:0 0 40px rgba(0,170,255,0.8);
+}
+
+.product img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:15px;
+margin-bottom:15px;
 }
 
 .product h3{
@@ -153,7 +164,7 @@ color:#555;
 <!-- دخولية -->
 <section class="hero">
 <h1>A Store Live Zone</h1>
-<p>المتجر الرسمي لسيرفر حياة واقعية</p>
+<p>مرحبًا بكم في متجر Live Zone الرسمي لسيرفر حياة واقعية حيث نقدم لكم أفضل الخدمات للعبة حياة واقعية بكل احترافية وسرعة في التفعيل وميزات حصرية مثل التفعيل الفوري وأولوية القبول في الوظائف والإدارة والرقابة والفعاليات داخل السيرفر استمتع بتجربة شراء سهلة وآمنة مع دعم كامل لجميع استفساراتك</p>
 <a href="#store" class="enter-btn">دخول المتجر</a>
 </section>
 
@@ -165,6 +176,7 @@ color:#555;
 
 <!-- التفعيل الفوري -->
 <div class="product">
+<img src="https://i.imgur.com/GA9axDq.jpeg" alt="التفعيل الفوري">
 <h3>التفعيل الفوري</h3>
 <div class="price">275 روبوكس</div>
 <p>تشتريه تنسحب في نفس اللحظة</p>
@@ -174,6 +186,7 @@ color:#555;
 
 <!-- الأولوية -->
 <div class="product">
+<img src="https://i.imgur.com/GA9axDq.jpeg" alt="الأولوية">
 <h3>الأولوية</h3>
 <div class="price">175 روبوكس</div>
 <p>أرخص من التفعيل الفوري</p>
@@ -201,4 +214,4 @@ color:#555;
 </footer>
 
 </body>
-</html>
+</html> 
