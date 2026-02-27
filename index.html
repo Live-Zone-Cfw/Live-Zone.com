@@ -142,16 +142,6 @@
             transform: scale(1.05);
         }
 
-        .discord-btn {
-            background: #5865F2;
-            padding: 15px 40px;
-            border-radius: 12px;
-            font-weight: 900;
-            transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
-        }
-        .discord-btn:hover { transform: translateY(-5px); background: #4752c4; }
-
         .scroll-down {
             position: absolute;
             bottom: 30px;
@@ -217,16 +207,11 @@
                     <p class="text-blue-400 font-bold mt-2">مؤسس السيرفر</p>
                 </div>
             </div>
-
-            <div class="mt-20">
-                <a href="https://discord.gg/7aPrMAYa8" target="_blank" class="discord-btn text-xl">
-                    <i class="fab fa-discord ml-2"></i> انضم إلى مجتمعنا
-                </a>
-            </div>
         </div>
     </section>
 
     <script>
+        // نظام الكتابة التلقائية (Typewriter)
         const text = "جاري تحضير أفضل بيئة رول بلاي...";
         let i = 0;
         function typeWriter() {
@@ -242,6 +227,7 @@
             }
         }
 
+        // تفعيل أنيميشن الظهور
         function activateReveals() {
             const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
