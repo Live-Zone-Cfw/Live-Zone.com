@@ -18,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* شريط التنقل العلوي */
         nav {
             position: fixed;
             top: 0; width: 100%;
@@ -35,10 +34,7 @@
         .nav-links a {
             margin: 0 20px;
             font-weight: 700;
-            font-size: 0.9rem;
             transition: 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         .nav-links a:hover { color: #00a2ff; }
 
@@ -47,13 +43,11 @@
             padding: 8px 25px;
             border-radius: 8px;
             font-weight: 900;
-            font-size: 0.8rem;
             box-shadow: 0 4px 15px rgba(0, 162, 255, 0.3);
             transition: 0.3s;
         }
-        .nav-discord:hover { transform: scale(1.05); box-shadow: 0 4px 20px rgba(0, 162, 255, 0.5); }
+        .nav-discord:hover { transform: scale(1.05); }
 
-        /* شاشة التحميل (Intro) */
         #intro {
             position: fixed;
             top: 0; left: 0;
@@ -72,10 +66,8 @@
             font-weight: 700;
             color: #00a2ff;
             min-height: 1.6em;
-            text-align: center;
         }
 
-        /* الخلفية الثابتة للموقع */
         .full-bg {
             position: fixed;
             top: 0; left: 0;
@@ -87,7 +79,6 @@
             z-index: -1;
         }
 
-        /* أنيميشن الظهور القوي */
         .reveal {
             opacity: 0;
             transform: translateY(50px) scale(0.9);
@@ -98,7 +89,7 @@
             transform: translateY(0) scale(1);
         }
 
-        .glow-text { text-shadow: 0 0 20px rgba(0, 162, 255, 0.8), 0 0 40px rgba(0, 162, 255, 0.4); }
+        .glow-text { text-shadow: 0 0 20px rgba(0, 162, 255, 0.8); }
 
         .server-img {
             width: 150px; height: 150px;
@@ -115,56 +106,46 @@
             justify-content: center;
             align-items: center;
             padding: 80px 20px;
-            position: relative;
-        }
-
-        .maintenance-tag {
-            background: rgba(0, 162, 255, 0.2);
-            color: #00a2ff;
-            border: 1px solid #00a2ff;
-            padding: 5px 20px;
-            border-radius: 50px;
-            font-weight: 900;
-            font-size: 14px;
         }
 
         .owner-card, .form-card {
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(10px);
-            padding: 30px;
+            padding: 40px;
             border-radius: 20px;
             border: 1px solid rgba(0, 162, 255, 0.2);
             width: 100%;
             max-width: 600px;
         }
 
-        input, select, textarea {
+        .form-group { margin-bottom: 25px; text-align: right; }
+
+        input, textarea {
             background: rgba(0, 0, 0, 0.5);
             border: 1px solid rgba(0, 162, 255, 0.3);
             border-radius: 10px;
-            padding: 12px;
+            padding: 15px;
             color: white;
             width: 100%;
-            margin-bottom: 15px;
             outline: none;
+            margin-top: 8px;
         }
         input:focus { border-color: #00a2ff; }
 
         .btn-primary {
             background: #00a2ff;
-            padding: 12px 25px;
+            padding: 15px;
             border-radius: 10px;
             font-weight: 900;
             width: 100%;
             transition: 0.3s;
         }
-        .btn-primary:hover { background: #0081cc; transform: scale(1.02); }
 
         .review-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
+            padding: 20px;
             border-radius: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border-right: 4px solid #00a2ff;
             text-align: right;
         }
@@ -177,17 +158,13 @@
             font-size: 2rem;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} 60% {transform: translateY(-5px);} }
     </style>
 </head>
 <body>
 
     <div id="intro">
-        <h2 class="text-4xl font-black text-white mb-4 italic tracking-widest">LIVE <span class="text-blue-500">ZONE</span></h2>
+        <h2 class="text-4xl font-black text-white mb-4 italic">LIVE <span class="text-blue-500">ZONE</span></h2>
         <div id="typewriter"></div>
     </div>
 
@@ -205,29 +182,24 @@
 
     <section id="hero">
         <div class="reveal flex flex-col items-center text-center">
-            <div class="maintenance-tag mb-8 uppercase">Under Maintenance | قيد الصيانة</div>
+            <div class="bg-blue-500/20 text-blue-400 border border-blue-500 px-5 py-1 rounded-full font-black text-sm mb-8">UNDER MAINTENANCE | قيد الصيانة</div>
             <div class="flex flex-col md:flex-row items-center gap-10 mb-8">
                 <img src="https://i.imgur.com/GA9axDq.jpeg" alt="Live Zone" class="server-img">
-                <h1 class="text-7xl md:text-9xl font-black glow-text italic uppercase">
-                    LIVE <span class="text-blue-500">ZONE</span>
-                </h1>
+                <h1 class="text-7xl md:text-9xl font-black glow-text italic uppercase">LIVE <span class="text-blue-500">ZONE</span></h1>
             </div>
-            <p class="max-w-2xl text-xl md:text-2xl text-slate-200 font-bold leading-relaxed mb-10">
-                نعمل حالياً على تطوير تجربة فريدة لكم في عالم روبلوكس.. انتظرونا قريباً بأقوى الأنظمة والمميزات.
-            </p>
+            <p class="max-w-2xl text-xl font-bold text-slate-200">نعمل حالياً على تطوير تجربة فريدة لكم في عالم روبلوكس.. انتظرونا قريباً.</p>
         </div>
         <a href="#owners" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
     </section>
 
     <section id="owners">
-        <div class="reveal flex flex-col items-center text-center w-full">
-            <h2 class="text-5xl font-black mb-16 italic"><span class="text-blue-500">#</span> الملاك</h2>
+        <div class="reveal flex flex-col items-center w-full">
             <div class="owner-card flex flex-col items-center gap-6">
                 <div class="relative">
                     <img src="https://i.imgur.com/7fG6atc.jpeg" alt="Owner" class="w-32 h-32 rounded-full border-4 border-blue-500 shadow-2xl">
                     <div class="absolute -bottom-2 -right-2 bg-blue-500 text-black px-3 py-1 rounded-lg font-black text-xs">OWNER</div>
                 </div>
-                <div>
+                <div class="text-center">
                     <h3 class="text-4xl font-black tracking-tighter">#-zynox</h3>
                     <p class="text-blue-400 font-bold mt-2">مؤسس السيرفر</p>
                 </div>
@@ -237,112 +209,111 @@
     </section>
 
     <section id="reviews">
-        <div class="reveal flex flex-col items-center text-center w-full px-4">
-            <h2 class="text-5xl font-black mb-12 italic"><span class="text-blue-500">#</span> تقييم النموذج</h2>
+        <div class="reveal flex flex-col items-center w-full px-4">
             
             <div id="start-form-container">
-                <button onclick="confirmEntry()" class="discord-btn bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-xl font-bold text-xl transition-all shadow-lg">
-                    هل أنت متأكد أنك تود التقييم؟
-                </button>
+                <button onclick="confirmEntry()" class="bg-blue-600 hover:bg-blue-700 px-10 py-4 rounded-xl font-bold text-xl transition-all shadow-lg">هل أنت متأكد أنك تود التقييم؟</button>
             </div>
 
             <div id="evaluation-form" class="hidden form-card mt-8">
-                <div class="text-right mb-6">
-                    <label class="block mb-2 font-bold text-blue-400">اسمك :</label>
+                <div class="form-group">
+                    <label class="font-bold text-blue-400">اسمك :</label>
                     <input type="text" id="reviewer-name" placeholder="أدخل اسمك هنا...">
-                    
-                    <label class="block mb-2 font-bold text-blue-400">عمرك :</label>
-                    <input type="number" id="reviewer-age" placeholder="أدخل عمرك...">
-                    
-                    <label class="block mb-2 font-bold text-blue-400">تقييمك :</label>
-                    <textarea id="reviewer-comment" rows="3" placeholder="اكتب تقييمك هنا..."></textarea>
-                    
-                    <button onclick="submitReview()" class="btn-primary">إرسال التقييم</button>
                 </div>
+                
+                <div class="form-group">
+                    <label class="font-bold text-blue-400">عمرك :</label>
+                    <input type="number" id="reviewer-age" placeholder="أدخل عمرك...">
+                </div>
+                
+                <div class="form-group">
+                    <label class="font-bold text-blue-400">تقييمك :</label>
+                    <textarea id="reviewer-comment" rows="3" placeholder="اكتب تقييمك هنا..."></textarea>
+                </div>
+                
+                <button onclick="submitReview()" class="btn-primary">إرسال التقييم</button>
             </div>
 
-            <div class="w-full max-w-2xl mt-12">
-                <h3 class="text-2xl font-black mb-6 text-right">أحدث التقييمات</h3>
-                <div id="reviews-list">
-                    <div class="review-item">
-                        <div class="flex justify-between items-center mb-2">
-                            <span class="font-black text-blue-400">عبود</span>
-                            <span class="text-xs text-gray-400">عمر: 19</span>
-                        </div>
-                        <p class="text-sm">سيرفر أسطوري ومنتظرين الافتتاح بفارغ الصبر!</p>
-                    </div>
-                </div>
+            <div class="w-full max-w-2xl mt-16">
+                <h3 class="text-2xl font-black mb-8 text-right border-b border-blue-500/30 pb-2">أحدث التقييمات</h3>
+                <div id="reviews-list"></div>
             </div>
         </div>
     </section>
 
     <script>
-        // نظام الكتابة التلقائية
         const text = "جاري تحضير أفضل بيئة رول بلاي...";
         let i = 0;
         function typeWriter() {
             if (i < text.length) {
                 document.getElementById("typewriter").innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 100);
+                i++; setTimeout(typeWriter, 100);
             } else {
                 setTimeout(() => {
                     document.getElementById("intro").style.transform = "translateY(-100%)";
                     setTimeout(activateReveals, 500);
+                    loadReviews();
                 }, 1000);
             }
         }
 
-        // إظهار النموذج عند التأكيد
         function confirmEntry() {
             document.getElementById('start-form-container').classList.add('hidden');
             document.getElementById('evaluation-form').classList.remove('hidden');
-            document.getElementById('evaluation-form').classList.add('animate-bounce-short');
         }
 
-        // إرسال التقييم (محاكاة)
         function submitReview() {
             const name = document.getElementById('reviewer-name').value;
             const age = document.getElementById('reviewer-age').value;
             const comment = document.getElementById('reviewer-comment').value;
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' });
 
             if(name && age && comment) {
-                const reviewsList = document.getElementById('reviews-list');
-                const newReview = document.createElement('div');
-                newReview.className = 'review-item reveal active animate-pulse';
-                newReview.innerHTML = `
-                    <div class="flex justify-between items-center mb-2">
-                        <span class="font-black text-blue-400">${name}</span>
-                        <span class="text-xs text-gray-400">عمر: ${age}</span>
-                    </div>
-                    <p class="text-sm">${comment}</p>
-                `;
-                reviewsList.prepend(newReview);
+                const reviewData = { name, age, comment, time: timeStr };
+                saveReview(reviewData);
+                renderReview(reviewData);
                 
-                // تصفير الحقول وإخفاء النموذج
                 document.getElementById('reviewer-name').value = '';
                 document.getElementById('reviewer-age').value = '';
                 document.getElementById('reviewer-comment').value = '';
-                alert('شكراً لتقييمك!');
-            } else {
-                alert('الرجاء تعبئة جميع الحقول');
-            }
+                alert('تم حفظ تقييمك بنجاح!');
+            } else { alert('الرجاء تعبئة جميع الحقول'); }
+        }
+
+        function saveReview(review) {
+            let reviews = JSON.parse(localStorage.getItem('livezone_reviews')) || [];
+            reviews.unshift(review);
+            localStorage.setItem('livezone_reviews', JSON.stringify(reviews));
+        }
+
+        function loadReviews() {
+            let reviews = JSON.parse(localStorage.getItem('livezone_reviews')) || [];
+            reviews.forEach(r => renderReview(r));
+        }
+
+        function renderReview(data) {
+            const reviewsList = document.getElementById('reviews-list');
+            const item = document.createElement('div');
+            item.className = 'review-item animate-pulse-once';
+            item.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-black text-blue-400">${data.name}</span>
+                    <span class="text-xs text-gray-400">العمر: ${data.age} | ${data.time}</span>
+                </div>
+                <p class="text-sm leading-relaxed">${data.comment}</p>
+            `;
+            reviewsList.appendChild(item);
         }
 
         function activateReveals() {
-            const reveals = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
+                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
             }, { threshold: 0.1 });
-            reveals.forEach(reveal => observer.observe(reveal));
+            document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
         }
 
         window.onload = typeWriter;
     </script>
 </body>
 </html>
- 
