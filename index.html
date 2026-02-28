@@ -98,6 +98,43 @@
         align-items: flex-start;
     }
 
+    /* مربع حالة التفعيل */
+    .status-box {
+        max-width: 840px;
+        margin: 50px auto 0;
+        padding: 25px;
+        background: rgba(255, 0, 0, 0.1);
+        border: 2px solid rgba(255, 0, 0, 0.5);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        animation: pulse-red 2s infinite;
+    }
+
+    @keyframes pulse-red {
+        0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+        70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    }
+
+    .status-box i {
+        font-size: 30px;
+        color: #ff4444;
+    }
+
+    .status-text h4 {
+        color: #ff4444;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    .status-text p {
+        color: #ccc;
+        font-size: 16px;
+    }
+
     .product-wrapper {
         width: 380px;
         display: flex;
@@ -201,7 +238,7 @@
     }
 
     .payment-info{
-        margin: 100px auto 0;
+        margin: 80px auto 0;
         padding: 40px;
         max-width: 900px;
         background: rgba(255,255,255,0.03);
@@ -220,6 +257,7 @@
     @media (max-width: 768px) {
         .product-circle { width: 320px; min-height: 320px; border-radius: 160px; }
         .product-wrapper { width: 100%; }
+        .status-box { flex-direction: column; text-align: center; margin: 30px 10px; }
     }
 </style>
 </head>
@@ -278,6 +316,14 @@
 
     </div>
 
+    <div class="status-box" id="activation-status">
+        <i class="fas fa-exclamation-triangle"></i>
+        <div class="status-text">
+            <h4>التفعيل مغلق حالياً</h4>
+            <p>نحيطكم علماً بأن التفعيل مغلق في الوقت الحالي، عند فتحه ستختفي هذه الرسالة تلقائياً. شكراً لانتظاركم.</p>
+        </div>
+    </div>
+
     <div class="payment-info">
         <h3 style="color:#00aaff; margin-bottom:15px;">طريقة الدفع والاستلام:</h3>
         <p><i class="fas fa-coins" style="margin-left:10px;"></i> يتم الشراء عبر متجر روبلوكس الرسمي من خلال الأزرار أعلاه.</p>
@@ -298,19 +344,18 @@
         const btn = event.currentTarget;
         const icon = btn.querySelector('i');
 
-        // تبديل حالة التوسع للدائرة
         circle.classList.toggle('expanded');
-        
-        // تبديل ظهور النص
         content.classList.toggle('description-active');
 
-        // تغيير اتجاه السهم
         if (content.classList.contains('description-active')) {
             icon.style.transform = "rotate(180deg)";
         } else {
             icon.style.transform = "rotate(0deg)";
         }
     }
+
+    /* ملاحظة للمطور: لإخفاء الرسالة عند فتح التفعيل، امسح السطر التالي أو غير كلمة block إلى none */
+    // document.getElementById('activation-status').style.display = 'none';
 </script>
 
 </body>
